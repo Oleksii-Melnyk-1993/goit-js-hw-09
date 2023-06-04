@@ -9,6 +9,7 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', onPromiseCreate);
+refs.delay;
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -29,8 +30,8 @@ function onPromiseCreate(event) {
   let step = Number(refs.step.value);
   let amount = Number(refs.amount.value);
   for (let i = 1; i <= amount; i += 1) {
-    let promiseDelay = valueDelay + step * i;
-    createPromise(i, promiseDelay)
+    valueDelay += step * i;
+    createPromise(i, valueDelay)
       .then(({ position, delay }) =>
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`)
       )
